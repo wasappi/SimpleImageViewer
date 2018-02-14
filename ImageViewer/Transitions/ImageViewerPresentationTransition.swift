@@ -41,6 +41,16 @@ final class ImageViewerPresentationTransition: NSObject, UIViewControllerAnimate
                        options: .curveEaseOut,  animations: {
             imageView.contentMode = .scaleAspectFit
             imageView.frame = containerView.bounds
+                        if #available(iOS 11.0, *) {
+                            if let notch = UIApplication.shared.keyWindow?.safeAreaInsets.top {
+                                if ((UIApplication.shared.keyWindow?.safeAreaInsets.bottom) != nil) {
+                                    var frame = containerView.bounds
+                                    frame.origin.y = notch
+                                    imageView.frame = frame
+                                }
+                            }
+                        }
+
             fadeView.alpha = 1.0
         }, completion: { _ in
             toView.isHidden = false

@@ -3,6 +3,7 @@ import AVFoundation
 
 public final class ImageViewerController: UIViewController {
     @IBOutlet fileprivate var scrollView: UIScrollView!
+    @IBOutlet weak var topLayoutConstraint: NSLayoutConstraint!
     @IBOutlet fileprivate var imageView: UIImageView!
     @IBOutlet fileprivate var activityIndicator: UIActivityIndicatorView!
     
@@ -29,11 +30,19 @@ public final class ImageViewerController: UIViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         imageView.image = configuration?.imageView?.image ?? configuration?.image
-        
         setupScrollView()
         setupGestureRecognizers()
         setupTransitions()
         setupActivityIndicator()
+        
+        if #available(iOS 11.0, *) {
+            if let notch = UIApplication.shared.keyWindow?.safeAreaInsets.top {
+                if ((UIApplication.shared.keyWindow?.safeAreaInsets.bottom) != nil) {
+                    topLayoutConstraint.constant = notch
+                    view.layoutIfNeeded()
+                }
+            }
+        }
     }
 }
 

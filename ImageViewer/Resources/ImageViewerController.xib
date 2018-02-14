@@ -15,6 +15,7 @@
                 <outlet property="activityIndicator" destination="oPl-2f-Knx" id="GOD-eG-o96"/>
                 <outlet property="imageView" destination="rHA-5m-kkS" id="V86-k1-pPH"/>
                 <outlet property="scrollView" destination="cQD-2Q-pvo" id="M6k-QU-OVY"/>
+                <outlet property="topLayoutConstraint" destination="ErM-q5-uey" id="Q2b-Ul-fMO"/>
                 <outlet property="view" destination="iN0-l3-epB" id="bEt-1B-b5l"/>
             </connections>
         </placeholder>
